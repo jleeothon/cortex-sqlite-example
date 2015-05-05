@@ -1,0 +1,17 @@
+
+// test1.cx
+
+sqlite::connector connector: "test.db"
+
+string human: "Ada"::
+    bool smart: true
+    int64 trunk: 3::
+        int32 leftArm: 5
+        int32 rightArm: 7::
+            int16 finger: 9
+    float64 rightLeg: 11.2
+    float32 leftLeg: 0
+
+Dog johnny: "Johnny", 4, DogBreed::Shiba, DogMood::Cuddly|DogMood::Playful
+Dog enrique: "Enrique", 10, DogBreed::Golden, DogMood::Playful|DogMood::Drowsy
+

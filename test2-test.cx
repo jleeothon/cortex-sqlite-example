@@ -1,0 +1,53 @@
+
+// test2.cx
+
+sqlite::connector connector: "test.db"
+
+
+int8 count: 0
+
+void succeed(string msg):
+    "$count . - $msg\n"
+    count += 1
+
+void fail(string msg):
+    "$count F - $msg\n"
+    count += 1
+
+void check(bool b, string msg):
+    if b: succeed(msg); else: fail(msg)
+
+object rootsolve(string name) = @::.resolve(name)
+
+check(@::.resolve("johnny") != null, "resolve johnny")
+
+check(@::.resolve("enrique") != null, "resolve enrique")
+
+check(@::.resolve("human") != null, "resolve human")
+
+check(@::.resolve("human::smart") != null, "resolve smart")
+
+check(@::.resolve("human::trunk") != null, "resolve trunk")
+
+check(@::.resolve("human::trunk::leftArm") != null, "resolve leftArm")
+
+var string& human = @::.resolve("human")
+check(human == "Ada", "value of Ada")
+
+var int64& trunk = @::.resolve("human::trunk")
+check(trunk == 3, "value of trunk")
+
+var int32& leftArm = @::.resolve("human::trunk::leftArm")
+check(leftArm == 5, "value of leftArm")
+
+var int32& rightArm = @::.resolve("human::trunk::rightArm")
+check(rightArm == 7, "value of rightArm")
+
+var int16& finger = @::.resolve("human::trunk::rightArm::finger")
+check(finger == 9, "value of finger")
+
+var float64& rightLeg = @::.resolve("human::rightLeg")
+check(rightLeg > 11.2 - 0.1 && rightLeg < 11.2 + 0.1, "value of rightLeg")
+
+var float32& leftLeg = @::.resolve("human::leftLeg")
+check(leftLeg == 0, "value of leftLeg")

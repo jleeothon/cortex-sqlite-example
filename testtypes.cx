@@ -1,0 +1,13 @@
+
+// testtypes.cx
+
+enum DogBreed:: Golden, Shiba, Xoloitzcuintle
+
+bitmask DogMood:: Cuddly, Playful, Drowsy
+
+struct Dog::
+    name: string
+    age: uint8
+    breed: DogBreed
+    mood: DogMood
+

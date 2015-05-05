@@ -1,0 +1,4 @@
+
+// test2.cx
+
+sqlite::connector connector: "test.db"
